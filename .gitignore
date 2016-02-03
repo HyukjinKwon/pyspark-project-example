@@ -1,5 +1,9 @@
 *.pyc
+*.tar.gz
+*.tgz
+thirdparty
 .idea/
 .idea_modules/
 .DS_Store
+.coverage
 build

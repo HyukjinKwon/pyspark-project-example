@@ -7,7 +7,7 @@ install:
 
 evn:
   global:
-    - PYTHONPATH=`pwd`/pyexample
+    - PYTHONPATH=`pwd`
 
 matrix:
   include:
@@ -45,12 +45,10 @@ before_script:
   - mkdir thirdparty
   - curl -O http://apache.mirror.cdnetworks.com/spark/spark-$TEST_SPARK_VERSION/spark-$TEST_SPARK_VERSION-bin-hadoop2.4.tgz
   - tar zxfC spark-$TEST_SPARK_VERSION-bin-hadoop2.4.tgz thirdparty
-  # Move to the ousrce
-  - cd pyexample
 
 script:
-  - pep8 --first `find . -name "*.py"`
-  - coverage run tests.py
+  - pep8 --first `find pyexample -name "*.py"`
+  - coverage run pyexample/tests/tests.py
   - python setup.py build
 
 after_success:

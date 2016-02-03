@@ -1,0 +1,24 @@
+# /usr/env bash
+cd "$(dirname "$0")"/..
+
+# Download Spark 1.6.0
+if [ ! -d thirdparty ]; then
+  mkdir thirdparty
+  curl -O http://apache.mirror.cdnetworks.com/spark/spark-1.6.0/spark-1.6.0-bin-hadoop2.4.tgz
+  tar zxfC spark-1.6.0-bin-hadoop2.4.tgz thirdparty
+fi
+
+# Remove build directory if exists
+if [ -d build ]; then
+  rm -fr build
+fi
+
+# Set enviroment variables
+export SPARK_HOME=`pwd`/thirdparty/spark-1.6.0-bin-hadoop2.4
+PYTHONPATH=`pwd`
+PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
+
+# Test
+pep8 --first `find pyexample -name "*.py"` &&\
+python pyexample/tests/tests.py &&\
+python setup.py build
