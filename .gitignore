@@ -6,4 +6,5 @@ thirdparty
 .idea_modules/
 .DS_Store
 .coverage
+coverage.xml
 build

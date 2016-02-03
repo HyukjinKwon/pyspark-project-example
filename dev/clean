@@ -1,0 +1,8 @@
+# /usr/env bash
+cd "$(dirname "$0")"/..
+
+rm -fr thirdparty
+rm -fr build
+rm -f .coverage
+rm -f coverage.xml
+rm -f spark-*-bin-hadoop2.4.tgz
