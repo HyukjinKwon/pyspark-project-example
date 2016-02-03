@@ -1,0 +1,58 @@
+language: python
+
+install:
+  - pip install codecov
+  - pip install pep8
+  - pip install -r requirements.txt
+
+evn:
+  global:
+    - PYTHONPATH=`pwd`/pyexample
+
+matrix:
+  include:
+    # Spark 1.3.0
+    - jdk: openjdk8
+      python: 2.6
+      env: >
+        TEST_SPARK_VERSION=1.3.1
+        SPARK_HOME=`pwd`/thirdparty/spark-$TEST_SPARK_VERSION-bin-hadoop2.4 
+        PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
+      before_script: 
+    # Spark 1.4.1
+    - jdk: openjdk8
+      python: 2.6
+      env: >
+        TEST_SPARK_VERSION=1.3.1
+        SPARK_HOME=`pwd`/thirdparty/spark-$TEST_SPARK_VERSION-bin-hadoop2.4
+        PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
+    # Spark 1.5.0
+    - jdk: openjdk8
+      python: 2.7
+      env: >
+        TEST_SPARK_VERSION=1.3.1
+        SPARK_HOME=`pwd`/thirdparty/spark-$TEST_SPARK_VERSION-bin-hadoop2.4
+        PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
+    # Spark 1.6.0
+    - jdk: openjdk8
+      python: 2.7
+      env: >
+        TEST_SPARK_VERSION=1.3.1
+        SPARK_HOME=`pwd`/thirdparty/spark-$TEST_SPARK_VERSION-bin-hadoop2.4
+        PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
+
+before_script:
+# Download Spark
+  - mkdir thirdparty
+  - curl -O http://apache.mirror.cdnetworks.com/spark/spark-$TEST_SPARK_VERSION/spark-$TEST_SPARK_VERSION-bin-hadoop2.4.tgz
+  - tar zxfC spark-$TRAVIS_SCALA_VERSION-bin-hadoop2.4.tgz thirdparty
+# Move to the ousrce
+  - cd pyexample
+
+script:
+  - pep8 --first *.py
+  - coverage run tests.py
+  - python setup.py
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
