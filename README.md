@@ -4,7 +4,7 @@ An example for PySpark based project.
 
 ## Prerequisites
 
-- JDK 7 (as the test download Spark 1.6.0 which dropped JDK 6 support)
+- JDK 7 (as the test downloads Spark 1.6.0, which dropped JDK 6 support)
 
 ## Test
 
