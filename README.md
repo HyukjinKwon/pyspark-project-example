@@ -11,7 +11,7 @@ An example for PySpark based project.
   ```bash
   pip install pep8
   ```
-- Python Py4K == 0.9.0 (for initiating Spark in local test)
+- Python Py4J == 0.9.0 (for initiating Spark in local test)
 
   ```bash
   pip install -r requirements.txt
