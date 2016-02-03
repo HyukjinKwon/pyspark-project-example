@@ -2,7 +2,7 @@ from pyexample import examples
 import unittest
 
 
-class TestStringMethods(unittest.TestCase):
+class TestSimplePySparkExample(unittest.TestCase):
     def test_pyexample(self):
         self.assertEqual(examples.example(), 5)
 
