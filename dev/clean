@@ -1,4 +1,4 @@
-# /usr/env bash
+#!/usr/bin/env bash
 cd "$(dirname "$0")"/..
 
 rm -fr thirdparty
