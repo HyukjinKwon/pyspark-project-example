@@ -4,7 +4,7 @@ A simple example for PySpark based project.
 
 ## Prerequisites
 
-- JDK 7 (as the local test downloads Spark 1.6.0, which dropped JDK 6 support)
+- JDK (>=7) (as the local test downloads Spark 1.6.0, which dropped JDK 6 support)
 
 - Python PEP 8 (for checking code-style in local test)
 
